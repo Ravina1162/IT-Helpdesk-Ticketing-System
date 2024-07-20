@@ -20,7 +20,7 @@ const Settings = () => {
   const fetchUserInfo = async () => {
     try {
       const profileInfo = await axios.get(
-        "http://localhost:3000/api/v1/users/profile",
+        "http://localhost:5000/api/v1/users/profile",
         { withCredentials: true }
       );
 
@@ -42,7 +42,7 @@ const Settings = () => {
       }
   
       const response = await axios.put(
-        "http://localhost:3000/api/v1/users/reset-password",
+        "http://localhost:5000/api/v1/users/reset-password",
         {
           email: email,
           password: newPassword,
@@ -61,7 +61,7 @@ const Settings = () => {
   const handleSetMFA = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/users/setMFA",
+        "http://localhost:5000/api/v1/users/setMFA",
         {
           id: userId, // Replace with the user's ID
         },
@@ -81,7 +81,7 @@ const Settings = () => {
     <div className="max-w-[1640px] mx-auto px-4 py-12">
       <button
         onClick={() => navigate(-1)} // Go back to the previous page
-        className="bg-blue-500 text-white py-2 px-4 rounded-full mt-4 ml-4"
+        className="bg-green-500 text-white py-2 px-4 rounded-full mt-4 ml-4"
       >
         Go Back
       </button>
@@ -116,7 +116,7 @@ const Settings = () => {
         </div>
         <button
           onClick={handleResetPassword}
-          className="bg-blue-500 text-white py-2 px-4 rounded-full w-full mb-4 focus:outline-none hover:bg-blue-600"
+          className="bg-green-500 text-white py-2 px-4 rounded-full w-full mb-4 focus:outline-none hover:bg-green-600"
         >
           Reset Password
         </button>
@@ -127,7 +127,7 @@ const Settings = () => {
         <div className="flex items-center mb-4">
           <button
             onClick={handleSetMFA}
-            className={`mfa-toggle-button bg-blue-500 text-white py-2 px-4 rounded-full mr-4 focus:outline-none`}
+            className={`mfa-toggle-button bg-green-500 text-white py-2 px-4 rounded-full mr-4 focus:outline-none`}
           >
             {mfaEnabled ? "Disable MFA" : "Enable MFA"}
           </button>

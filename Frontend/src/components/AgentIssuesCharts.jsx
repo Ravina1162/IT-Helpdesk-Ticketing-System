@@ -10,7 +10,7 @@ const AgentIssuesChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/v1/reports/tickets/agent/${agentId}`);
+        const response = await axios.get(`http://localhost:5000/api/v1/reports/tickets/agent/${agentId}`);
         const data = response.data;
         console.log(data);
 

@@ -27,7 +27,7 @@ const CreateTicket = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/tickets",
+        "http://localhost:5000/api/v1/tickets",
         formData,
         {
           withCredentials: true,
@@ -98,7 +98,7 @@ const CreateTicket = () => {
     const fetchWorkflow = async () => {
       if (formData.Issue_Type !== "default") {
         try {
-          const response = await axios.get(`http://localhost:3000/workflows/${formData.Issue_Type}` , { withCredentials: true });
+          const response = await axios.get(`http://localhost:5000/workflows/${formData.Issue_Type}` , { withCredentials: true });
           setWorkflowResponse(response.data.Custom_Workflow);
         } catch (error) {
           console.error("Error fetching workflow:", error);
@@ -118,7 +118,7 @@ const CreateTicket = () => {
         <div className={`max-w-[1640px] mx-auto bg-gray-200 bg-opacity-50 rounded-lg p-8 flex`}>
           <div className="w-1/3 pr-8">
             <img
-              src="https://img.freepik.com/free-vector/organic-flat-customer-support-illustration_23-2148899174.jpg?w=1380&t=st=1703599026~exp=1703599626~hmac=73f223ce6fcbfe2db7282b50aeb152b046702091d447294f52a731f70e4ba1cf"
+              src="https://plus.unsplash.com/premium_photo-1679870686438-7de708175059?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="People asking questions"
               className="w-full h-auto object-cover rounded-lg"
             />

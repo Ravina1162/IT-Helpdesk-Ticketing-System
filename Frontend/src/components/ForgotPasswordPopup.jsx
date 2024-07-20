@@ -10,7 +10,7 @@ const ForgotPasswordPopup = ({ theme, onClose }) => {
   const handleForgotPassword = async () => {
     try {
       const resetPasswordResponse = await axios.post(
-        'http://localhost:3000/api/v1/users/reset-password',
+        'http://localhost:5000/api/v1/users/reset-password',
         { email, password },
         { withCredentials: true }
       );

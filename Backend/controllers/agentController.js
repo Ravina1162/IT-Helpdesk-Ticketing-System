@@ -49,13 +49,13 @@ const agentController = {
           subject: "Your Ticket Status Has Been Closed",
           text: resolutionDetails,
         };
-      transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.log(error);
-        } else {
-          console.log("Email sent: " + info.response);
-        }
-      });
+      // transporter.sendMail(mailOptions, function (error, info) {
+      //   if (error) {
+      //     console.log(error);
+      //   } else {
+      //     console.log("Email sent: " + info.response);
+      //   }
+      // });
       const newNotification = new Notifications({
         Sender: Agent._id,
         Receiver: Client._id,
@@ -112,13 +112,13 @@ const agentController = {
                 subject: "Your Ticket Status Has Been Updated",
                 text: message,
               };
-              transporter.sendMail(mailOptions, function (error, info) {
-                if (error) {
-                  console.log(error);
-                } else {
-                  console.log("Email sent: " + info.response);
-                }
-              });
+              // transporter.sendMail(mailOptions, function (error, info) {
+              //   if (error) {
+              //     console.log(error);
+              //   } else {
+              //     console.log("Email sent: " + info.response);
+              //   }
+              // });
           
       res.status(200).json({ message: "Ticket Updated" });
     } catch (error) {
@@ -146,13 +146,13 @@ const agentController = {
         subject: subject,
         text: message,
       }
-      await transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-        console.log(error);
-        } else {
-            console.log("Email sent: " + info.response);
-        }
-      });
+      // await transporter.sendMail(mailOptions, function (error, info) {
+      //   if (error) {
+      //   console.log(error);
+      //   } else {
+      //       console.log("Email sent: " + info.response);
+      //   }
+      // });
       console.log(Ticket.Assigned_AgentID);
       console.log(Ticket.Ticket_Owner);
       console.log(1);

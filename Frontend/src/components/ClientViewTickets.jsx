@@ -13,7 +13,7 @@ const ViewMyTickets = () => {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/tickets', { withCredentials: true });
+        const response = await axios.get('http://localhost:5000/tickets', { withCredentials: true });
         setTickets(response.data);
         const closed = response.data.filter((ticket) => ticket.Status.toLowerCase() === 'closed');
         setClosedTickets(closed);
@@ -28,7 +28,8 @@ const ViewMyTickets = () => {
   const isTicketRated = (ticketId) => ratedTickets.includes(ticketId);
 
   const canStartChat = (ticket) => {
-    return ticket.Status.toLowerCase() === 'closed' || ticket.Sub_Issue_Type.toLowerCase() === 'other';
+    // return ticket.Status.toLowerCase() === 'closed' || ticket.Sub_Issue_Type.toLowerCase() === 'other';
+    return true;
   };
 
   const handleStartChat = (ticket) => {
@@ -39,7 +40,7 @@ const ViewMyTickets = () => {
   const handleRateAgent = async (ticketId, rating) => {
     try {
       const response = await axios.put(
-        'http://localhost:3000/api/v1/rateAgent',
+        'http://localhost:5000/api/v1/rateAgent',
         {
           ticketId,
           Rating: rating,
@@ -61,7 +62,7 @@ const ViewMyTickets = () => {
         <div className='max-w-[1640px] mx-auto bg-gray-200 bg-opacity-50 rounded-lg p-8 flex'>
           <div className='w-1/3 pr-8'>
             <img
-              src='https://img.freepik.com/free-vector/flat-design-illustration-customer-support_23-2148887720.jpg?w=826&t=st=1703601129~exp=1703601729~hmac=56a715895e2952692f1f869a9ed91e8d7136ad68fa591b71ef4c45a842201c13'
+              src='https://img.freepik.com/free-vector/active-support-concept-illustration_114360-707.jpg?w=740'
               alt='People asking questions'
               className='w-full h-auto object-cover rounded-lg'
             />

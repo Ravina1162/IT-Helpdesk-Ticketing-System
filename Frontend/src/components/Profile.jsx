@@ -16,7 +16,7 @@ const Profile = () => {
     const fetchUserProfile = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/v1/users/profile",
+          "http://localhost:5000/api/v1/users/profile",
           { withCredentials: true }
         );
 
@@ -36,7 +36,7 @@ const Profile = () => {
   const handleUpdateProfile = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/api/v1/users/${userId}`,
+        `http://localhost:5000/api/v1/users/${userId}`,
         {
           newEmail,
           newUsername,
@@ -56,8 +56,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-[800px] mx-auto p-8 bg-white rounded-lg shadow-md mt-10">
-      <h1 className="text-3xl font-bold mb-6">Update Your Profile</h1>
+    <div className="max-w-[800px] mx-auto p-8 bg-green rounded-lg shadow-md mt-15">
+      <h1 className="text-3xl font-bold mb-6 text-green-600">Update Your Profile</h1>
       <form onSubmit={handleUpdateProfile} className="space-y-4">
         <div>
           <label htmlFor="email" className="block text-sm font-semibold text-gray-600">
@@ -80,7 +80,7 @@ const Profile = () => {
             type="text"
             value={newUsername}
             onChange={(e) => setNewUsername(e.target.value)}
-            className="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"
+            className="w-full p-2 border rounded-md focus:outline-none focus:border-green-500"
           />
         </div>
         <div>
@@ -92,21 +92,21 @@ const Profile = () => {
             type="text"
             value={newPhoneNumber}
             onChange={(e) => setNewPhoneNumber(e.target.value)}
-            className="w-full p-2 border rounded-md focus:outline-none focus:border-blue-500"
+            className="w-full p-2 border rounded-md focus:outline-none focus:border-green-500"
           />
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded-full focus:outline-none hover:bg-blue-600"
+          className="bg-green-500 text-white py-2 px-4 rounded-full focus:outline-none hover:bg-blue-600"
         >
-          Update Profile
+          Update
         </button>
       </form>
 
       <div className="mt-6">
         <button
           onClick={handleGoBack}
-          className="flex items-center text-blue-500 hover:underline focus:outline-none"
+          className="flex items-center text-green-500 hover:underline focus:outline-none"
         >
           <AiOutlineArrowLeft className="mr-2" />
           Back to Previous Page

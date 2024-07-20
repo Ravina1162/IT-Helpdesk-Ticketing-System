@@ -17,7 +17,7 @@ const ChatInterface = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/users/profile', { withCredentials: true });
+        const response = await axios.get('http://localhost:5000/api/v1/users/profile', { withCredentials: true });
 
         setUser(response.data.user);
         setUserId(response.data.user._id);
@@ -32,7 +32,7 @@ const ChatInterface = () => {
   useEffect(() => {
     const initializeChat = async () => {
       try {
-        const existingChatResponse = await axios.get(`http://localhost:3000/chat?ticketId=${ticketId}`, { withCredentials: true });
+        const existingChatResponse = await axios.get(`http://localhost:5000/chat?ticketId=${ticketId}`, { withCredentials: true });
         if (existingChatResponse.data.length > 0) {
           setMessages(existingChatResponse.data);
         } else {
@@ -51,7 +51,7 @@ const ChatInterface = () => {
   useEffect(() => {
     if (!userId) return;
 
-    socketRef.current = io('http://localhost:3000', { withCredentials: true, transports: ['websocket'] });
+    socketRef.current = io('http://localhost:5000', { withCredentials: true, transports: ['websocket'] });
 
     socketRef.current.on(`chat_${ticketId}`, (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
@@ -73,7 +73,7 @@ const ChatInterface = () => {
   const sendMessage = async () => {
     if (inputMessage.trim() !== '') {
       try {
-        await axios.put(`http://localhost:3000/chat?ticketId=${ticketId}`, { message: inputMessage }, { withCredentials: true });
+        await axios.put(`http://localhost:5000/chat?ticketId=${ticketId}`, { message: inputMessage }, { withCredentials: true });
 
         const newMessage = {
           SenderID: userId,
@@ -101,7 +101,7 @@ const ChatInterface = () => {
   return (
     <div className='flex flex-col h-screen' style={backgroundImageStyle}>
       <div className='flex-1 p-4 sm:p-6 flex flex-col h-screen'>
-        <button className='bg-blue-500 text-white p-2 rounded-md mb-4 self-start' onClick={() => navigate(-1)}>
+        <button className='bg-green-500 text-white p-2 rounded-md mb-4 self-start' onClick={() => navigate(-1)}>
           Back to Tickets
         </button>
         <div id='messages' className='flex flex-col space-y-4 p-3 bg-opacity-75 bg-white rounded-md overflow-y-auto flex-1'>
@@ -120,7 +120,7 @@ const ChatInterface = () => {
                   <div>
                     <span
                       className={`px-4 py-2 rounded-lg inline-block ${
-                        message.SenderID === userId ? 'rounded-br-none bg-blue-600 text-white' : 'bg-gray-300 text-gray-600'
+                        message.SenderID === userId ? 'rounded-br-none bg-green-600 text-white' : 'bg-gray-300 text-gray-600'
                       }`}
                     >
                       {message.Message}
@@ -137,7 +137,7 @@ const ChatInterface = () => {
             <input
               type='text'
               placeholder='Write your message!'
-              className='w-full focus:outline-none text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-md py-3'
+              className='w-full focus:outline-none text-gray-600 placeholder-green-600 pl-12 bg-gray-green rounded-md py-3'
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
             />
@@ -145,7 +145,7 @@ const ChatInterface = () => {
               <button
                 type='button'
                 onClick={sendMessage}
-                className='inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none'
+                className='inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out text-white bg-green-500 hover:bg-green-400 focus:outline-none'
               >
                 <span className='font-bold'>Send</span>
               </button>

@@ -34,7 +34,7 @@ const Manager = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/manager/getAgents', {withCredentials: true});
+        const response = await axios.get('http://localhost:5000/api/v1/manager/getAgents', {withCredentials: true});
         console.log('Agent Data:', response.data.agents);
         setAgents(response.data.agents);
       } catch (error) {
@@ -48,7 +48,7 @@ const Manager = () => {
   useEffect(() => {
     const fetchTicketData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/reports/tickets', {withCredentials: true});
+        const response = await axios.get('http://localhost:5000/api/v1/reports/tickets', {withCredentials: true});
         const tickets = response.data;
         const issueTypes = tickets.map((ticket) => ticket.Issue_Type);
         const subIssueTypes = tickets.map((ticket) => ticket.Sub_Issue_Type);
@@ -102,28 +102,29 @@ const Manager = () => {
   return (
     <div 
       className="bg-cover bg-center h-screen flex justify-center items-center" 
-      style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1557426272-fc759fdf7a8d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
-      }}
+      // style={{
+      //   backgroundImage: "url('https://images.unsplash.com/photo-1562564055-71e051d33c19?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')"
+      // }}
     >
       <div className='max-w-[1640px] mx-auto px-4 py-12 text-center bg-white bg-opacity-50 rounded-lg p-8'>
-        <h1 className={`text-${theme.colors.primary} font-bold text-4xl mb-8`}>
-          Welcome to Manager Dashboard
+        <h1 className={`text-blue-500 font-bold text-4xl mb-8`}>
+          Welcome to Manager's Dashboard
         </h1>
-        <p className={`text-${theme.colors.text} text-lg my-4`}>
-          Manage and oversee the operations of your Help Desk. Access tools and features to administer users, handle tickets, and analyze support data.
+        <p className={`text-black-600 text-lg my-4`}>
+          
+Effortlessly oversee your Help Desk operations. Utilize our intuitive tools to manage users, handle tickets, and analyze support data seamlessly.
         </p>
 
         <div className="max-w-[1200px] mx-auto p-4">
           <div className="flex mb-8">
             <div className="w-1/2 pr-4">
-              <h2 className={`text-${theme.colors.primary} font-bold text-2xl mb-4`}>
+              <h2 className={`text-blue-600 font-bold text-2xl mb-4`}>
                 Issue Types Chart
               </h2>
               <Bar data={issueTypeData} height={100} options={chartOptions} />
             </div>
             <div className="w-1/2 pl-4">
-              <h2 className={`text-${theme.colors.primary} font-bold text-2xl mb-4`}>
+              <h2 className={`text-blue-600 font-bold text-2xl mb-4`}>
                 Subissue Types Chart
               </h2>
               <Bar data={subIssueTypeData} height={100} options={chartOptions} />

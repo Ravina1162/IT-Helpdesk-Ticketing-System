@@ -38,7 +38,7 @@ const Appearance = () => {
   const handleThemeChange = async () => {
     try {
       await axios.post(
-        'http://localhost:3000/editAppearance/',
+        'http://localhost:5000/editAppearance/',
         { theme: themeName, logoPath },
         { withCredentials: true }
       );
@@ -54,7 +54,7 @@ const Appearance = () => {
 
   const fetchGlobalSettings = async () => {
     try {
-      const globalSettingsResponse = await axios.get('http://localhost:3000/Appearance/', {
+      const globalSettingsResponse = await axios.get('http://localhost:5000/Appearance/', {
         withCredentials: true,
       });
       if (globalSettingsResponse.data.uniqueThemes.length > 0) {

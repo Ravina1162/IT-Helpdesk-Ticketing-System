@@ -29,7 +29,7 @@ const Login = ({ theme }) => {
   const handleVerifyOTP = async (enteredOTP) => {
     try {
       const verifyOTPResponse = await axios.post(
-        'http://localhost:3000/verifyOTP',
+        'http://localhost:5000/verifyOTP',
         {
           email,
           code: enteredOTP
@@ -39,7 +39,7 @@ const Login = ({ theme }) => {
 
       if (verifyOTPResponse.data.message === 'Multi-factor authentication email sent successfully') {
         const loginResponse = await axios.post(
-          'http://localhost:3000/api/v1/login',
+          'http://localhost:5000/api/v1/login',
           {
             email,
             password
@@ -68,11 +68,11 @@ const Login = ({ theme }) => {
           return;
         }
 
-        const mfaResponse = await axios.get(`http://localhost:3000/getMFA?email=${email}`);
+        const mfaResponse = await axios.get(`http://localhost:5000/getMFA?email=${email}`);
 
         if (mfaResponse.data) {
           const sendOTPResponse = await axios.post(
-            'http://localhost:3000/sendOTP',
+            'http://localhost:5000/sendOTP',
             { email },
           );
 
@@ -81,7 +81,7 @@ const Login = ({ theme }) => {
           }
         } else {
           const loginResponse = await axios.post(
-            'http://localhost:3000/api/v1/login',
+            'http://localhost:5000/api/v1/login',
             { email, password },
             { withCredentials: true }
           );
@@ -96,18 +96,18 @@ const Login = ({ theme }) => {
     } else {
       try {
         const response = await axios.post(
-          'http://localhost:3000/api/v1/register',
+          'http://localhost:5000/api/v1/register',
           { email, password, username, phoneNumber },
           {
             withCredentials: true
           }
         );
 
-        const mfaResponse = await axios.get(`http://localhost:3000/api/v1/users/getMFA?email=${email}`, { withCredentials: true });
+        const mfaResponse = await axios.get(`http://localhost:5000/api/v1/users/getMFA?email=${email}`, { withCredentials: true });
 
         if (mfaResponse.data) {
           const sendOTPResponse = await axios.post(
-            'http://localhost:3000/api/v1/users/sendOTP',
+            'http://localhost:5000/api/v1/users/sendOTP',
             {
               email
             },
@@ -119,7 +119,7 @@ const Login = ({ theme }) => {
           }
         } else {
           const loginResponse = await axios.post(
-            'http://localhost:3000/api/v1/login',
+            'http://localhost:5000/api/v1/login',
             {
               email,
               password
@@ -170,7 +170,7 @@ const Login = ({ theme }) => {
       </button>
 
       <button onClick={handleForgotPasswordClick} className={`text-${theme.colors.primary} ml-4 cursor-pointer`}>
-        Forgot Password
+        Forgot Password?
       </button>
 
       {showLogin && (
@@ -195,7 +195,7 @@ const Login = ({ theme }) => {
               </div>
 
               <div className={`flex items-center bg-${theme.colors.background} rounded-full mb-4 p-2`}>
-                <AiOutlineLock size={25} />
+                <AiOutlineLock size={22} />
                 <input
                   className={`bg-transparent p-2 w-full focus:outline-none ml-2 text-${theme.colors.text}`}
                   type='password'

@@ -11,7 +11,7 @@ const TicketList = () => {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/reports/tickets', { withCredentials: true });
+        const response = await axios.get('http://localhost:5000/api/v1/reports/tickets', { withCredentials: true });
         setTickets(response.data);
       } catch (error) {
         console.error('Error fetching tickets:', error);
@@ -23,7 +23,7 @@ const TicketList = () => {
 
   const handleGenerateReport = async (ticketId, agentId) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/v1/reports/tickets/ticketsId/${ticketId}`, { withCredentials: true });
+      const response = await axios.get(`http://localhost:5000/api/v1/reports/tickets/ticketsId/${ticketId}`, { withCredentials: true });
       setSelectedTicket(response.data);
       setIsModalOpen(true);
     } catch (error) {
@@ -37,7 +37,7 @@ const TicketList = () => {
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', paddingTop: '20px' }}>
-      <h1 style={{ color: '#333' }}>Ticket List</h1>
+      <h1 style={{ color: 'green' }}>Ticket List</h1>
       <table
         style={{
           borderCollapse: 'collapse',
@@ -49,7 +49,7 @@ const TicketList = () => {
         }}
       >
         <thead>
-          <tr style={{ backgroundColor: '#f2f2f2', borderBottom: '2px solid #ddd', color: '#333' }}>
+          <tr style={{ backgroundColor: '#ADD8E6', borderBottom: '2px solid #ddd', color: '#0e2b7d' }}>
             <th style={{ padding: '12px' }}>Ticket ID</th>
             <th style={{ padding: '12px' }}>Assigned Agent ID</th>
             <th style={{ padding: '12px' }}>Ticket Owner</th>
@@ -60,7 +60,7 @@ const TicketList = () => {
         </thead>
         <tbody>
           {tickets.map((ticket) => (
-            <tr key={ticket._id} style={{ borderBottom: '1px solid #ddd' }}>
+            <tr key={ticket._id} style={{ borderBottom: '1px solid #0e2b7d' }}>
               <td style={{ padding: '12px' }}>{ticket._id}</td>
               <td style={{ padding: '12px' }}>{ticket.Assigned_AgentID}</td>
               <td style={{ padding: '12px' }}>{ticket.Ticket_Owner}</td>

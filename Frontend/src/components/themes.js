@@ -37,9 +37,9 @@ export const DarkNebulaTheme = {
 // Additional Themes
 export const EarthyForestTheme = {
   colors: {
-    primary: '#4CAF50',
+    primary: '#4CAF50', // #4CAF50      #2196F3
     secondary: '#2196F3',
-    background: '#E8EAF6',
+    background: '#80dfff',// #E8EAF6 is changed to  #80dfff 
     text: '#1E1E1E',
     accent: '#FFEB3B',
   },

@@ -16,7 +16,7 @@ const AgentTickets = () => {
 
   const getTickets = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/agent/getTickets", { withCredentials: true });
+      const response = await axios.get("http://localhost:5000/api/v1/agent/getTickets", { withCredentials: true });
 
       console.log("Response data:", response.data);
 
@@ -48,7 +48,7 @@ const AgentTickets = () => {
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
-    backgroundImage: 'url("https://images.unsplash.com/photo-1600134637836-9d015f520941?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODZ8fFRpY2tldHN8ZW58MHx8MHx8fDA%3D")',
+    backgroundImage: 'url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -123,6 +123,12 @@ const AgentTickets = () => {
                 <td style={thTdStyle}>{ticket.Description}</td>
                 <td style={thTdStyle}>{ticket.Priority}</td>
                 <td style={thTdStyle}>{ticket.Ticket_Owner}</td>
+                <td style={thTdStyle}>33</td>
+                <td style={thTdStyle}>open</td>
+                <td style={thTdStyle}>Email</td>
+                <td style={thTdStyle}>Link not attaching</td>
+                <td style={thTdStyle}>NA</td>
+                <td style={thTdStyle}>bnm</td>
                 <td style={thTdStyle}>
                   <button style={actionButtonStyle} onClick={() => handleResolveClick(ticket._id)}>Resolve</button>
                   <Link to={`/chat/${ticket._id}`}>
