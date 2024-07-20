@@ -48,6 +48,12 @@ This project is a comprehensive Helpdesk software application developed using th
 
 ---
 Detailed demonstration of the frontend:
+![image](https://github.com/user-attachments/assets/4e754ff7-d0af-403e-9b53-08e2c5d3391b)
+![image](https://github.com/user-attachments/assets/28ccaa6e-2fbc-440a-8fb0-1a3ac1e0b8a0)
+![image](https://github.com/user-attachments/assets/0e2ddf91-75bd-407f-bc1b-69ba9687d5f2)
+
+
+
 ---
 
 
